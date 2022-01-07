@@ -1,7 +1,7 @@
 package com.dragon.tools.vo;
 
 import com.dragon.tools.common.ReturnCode;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang.StringUtils;
@@ -23,13 +23,13 @@ import java.util.List;
 public class ReturnVo<T> implements Serializable {
     private static final long serialVersionUID = -5580228202640516960L;
     // 响应编码
-    @ApiModelProperty(value = "响应编码 100成功 101失败", example = "100")
+    @Schema(description = "响应编码 100成功 101失败", example = "100")
     private String code;
     // 响应消息
-    @ApiModelProperty(value = "响应消息", example = "操作成功")
+    @Schema(description = "响应消息", example = "操作成功")
     private String msg;
     // 返回的vo
-    @ApiModelProperty(value = "返回数据对象")
+    @Schema(description = "返回数据对象")
     private T data;
 
     public boolean isSuccess() {

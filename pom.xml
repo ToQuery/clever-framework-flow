@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>clever-framework</artifactId>
+		<groupId>io.github.toquery</groupId>
+		<version>1.0.8-SNAPSHOT</version>
+	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
@@ -9,19 +14,227 @@
 		<module>flow-admin-rest</module>
 		<module>flow-admin</module>
         <module>flow-tools</module>
-		<module>flow-parent</module>
         <module>flow-extension</module>
         <module>flow-api-rest</module>
         <module>flow-front-rest</module>
         <module>flow-log</module>
+		<!--
+
+		<module>flow-parent</module>
         <module>flow-dubbo</module>
         <module>flow-springcloud</module>
+        -->
     </modules>
 	<groupId>com.dragon</groupId>
 	<artifactId>flow</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
 	<name>flow</name>
 	<description>企业数智化</description>
+	<properties>
+		<flowable.version>6.7.1</flowable.version>
+		<mybatis-plus-boot-starter.version>3.4.3.4</mybatis-plus-boot-starter.version>
+		<shiro.version>1.7.0</shiro.version>
+		<fastjson.version>1.2.68</fastjson.version>
+		<flow.version>1.1.0-SNAPSHOT</flow.version>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-core</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-log</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-api</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-extension</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+			<!-- 流程中心的依赖包 -->
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-admin-rest</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-api-rest</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dragon</groupId>
+				<artifactId>flow-tools</artifactId>
+				<version>${flow.version}</version>
+			</dependency>
+
+			<!-- shiro spring. -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<!-- shiro ehcache -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-quartz</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.penggle</groupId>
+				<artifactId>kaptcha</artifactId>
+				<version>2.3.2</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>2.1.1</version>
+			</dependency>
+			<!-- 集成oss的存储 -->
+			<dependency>
+				<groupId>com.aliyun.oss</groupId>
+				<artifactId>aliyun-sdk-oss</artifactId>
+				<version>3.8.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.5.3</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.flowable</groupId>
+				<artifactId>flowable-bpmn-model</artifactId>
+				<version>${flowable.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.flowable</groupId>
+				<artifactId>flowable-json-converter</artifactId>
+				<version>${flowable.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.flowable</groupId>
+				<artifactId>flowable-bpmn-converter</artifactId>
+				<version>${flowable.version}</version>
+			</dependency>
+			<!-- mybtis-plus -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>kisso</artifactId>
+				<version>3.7.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>3.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.liaochong</groupId>
+				<artifactId>myexcel</artifactId>
+				<version>2.8.5</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>io.swagger.core.v3</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.swagger.core.v3</groupId>
+				<artifactId>swagger-core</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-ui</artifactId>
+				<version>${springdoc.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>itextpdf</artifactId>
+				<version>5.3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.itextpdf.tool</groupId>
+				<artifactId>xmlworker</artifactId>
+				<version>5.5.8</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-annotation</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-core</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-extension</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>

@@ -1,0 +1,72 @@
+flowable:
+  activity-font-name: 宋体
+  annotation-font-name: 宋体
+  common:
+    app:
+      idm-admin:
+        password: test
+        user: admin
+      idm-url: /
+  database-schema-update: true
+  label-font-name: 宋体
+  process:
+    async:
+      executor:
+        auto-activate: false
+    definition-cache-limit: -1
+mybatis-plus:
+  configuration-properties:
+    blobType: BLOB
+    boolValue: true
+    prefix: ''
+  global-config:
+    db-config:
+      select-strategy: not_empty
+  mapper-locations: classpath:/META-INF/flow-mybatis-mappings/*/xml/*.xml,classpath:/META-INF/modeler-mybatis-mappings/*.xml
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 4096
+  servlet:
+    context-path: ''
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  aop:
+    auto: false
+    proxy-target-class: false
+  application:
+    name: flow-admin
+  banner:
+    location: classpath:dragon-banner.txt
+  cache:
+    ehcache:
+      config: classpath:/ehcache/flow-ehcache.xml
+#  http:
+#    encoding:
+#      charset: UTF-8
+#      enabled: true
+#      force: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: GMT+8
+  jmx:
+    default-domain: ${spring.application.name}
+  liquibase:
+    enabled: false
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    static-path-pattern: classpath:/static/,classpath:/public/
+  profiles:
+    active: local
+  security:
+    filter:
+      dispatcher-types: REQUEST,FORWARD,ASYNC
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB

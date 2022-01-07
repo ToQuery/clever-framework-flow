@@ -3,7 +3,7 @@ package com.dragon.flow.vo.flowable.processinstance;
 import com.dragon.flow.enm.flowable.runtime.ProcessStatusEnum;
 import com.dragon.flow.vo.flowable.task.ApproverVo;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import java.util.List;
  * @author liuwenjun1
  */
 @Data
-@ApiModel(value = "ProcessInstanceVo", description = "查询流程实例返回对象")
+@Schema(description = "查询流程实例返回对象")
 public class ProcessInstanceVo implements Serializable {
     private static final long serialVersionUID = -5038515846218363889L;
     public ProcessInstanceVo(){}

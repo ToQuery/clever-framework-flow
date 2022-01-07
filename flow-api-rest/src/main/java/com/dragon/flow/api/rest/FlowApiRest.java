@@ -30,10 +30,10 @@ import com.dragon.tools.vo.ReturnVo;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +52,7 @@ import java.util.*;
  * @author: Bruce.Liu
  * @create: 2021-05-08 14:36
  **/
-@Api(tags = "流程中心相关接口")
+@Tag(name = "流程中心相关接口")
 @RestController
 @RequestMapping("/api/flow")
 public class FlowApiRest extends AbstractFlowApiImpl {
@@ -67,8 +67,8 @@ public class FlowApiRest extends AbstractFlowApiImpl {
      * @return
      */
     @Login(action = Action.Skip)
-    @ApiOperation(value = "通过用户名密码获取token", notes = "通过用户名密码获取token")
-    @ApiImplicitParam(name = "AuthTokenVo", dataType = "String", required = true, value = "对接的应用的认证信息", defaultValue = "params")
+    @Operation(summary = "通过用户名密码获取token", description = "通过用户名密码获取token")
+    @Parameter(name = "AuthTokenVo",required = true , description = "对接的应用的认证信息", example = "params")
     @PostMapping("/getJwtToken")
     public ReturnVo<String> getJwtToken(HttpServletRequest request, HttpServletResponse response, @RequestBody AuthTokenVo params) {
         ReturnVo<String> returnVo = new ReturnVo<>(ReturnCode.SUCCESS, "OK");
@@ -115,18 +115,18 @@ public class FlowApiRest extends AbstractFlowApiImpl {
     }
 
     @Override
-    @ApiOperation(value = "通过modelKey获取模型对象", notes = "通过modelKey获取模型对象")
-    @ApiImplicitParam(name = "modelKey", dataType = "String", required = true, value = "模型Key", defaultValue = "test_leave")
+    @Operation(summary = "通过modelKey获取模型对象", description = "通过modelKey获取模型对象")
+    @Parameter(name = "modelKey",required = true , description = "模型Key", example = "test_leave")
     @PostMapping(value = "/loadBpmnXmlByModelKey", produces = "application/json")
     public ReturnVo<ModelInfoVo> loadBpmnXmlByModelKey(String modelKey) {
         return super.loadBpmnXmlByModelKey(modelKey);
     }
 
     @Override
-    @ApiOperation(value = "查询节点信息", notes = "查询节点信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "processInstanceId", dataType = "String", required = true, value = "流程实例id", defaultValue = "018273249827498324"),
-            @ApiImplicitParam(name = "activityId", dataType = "String", required = true, value = "节点id", defaultValue = "12143334")
+    @Operation(summary = "查询节点信息", description = "查询节点信息")
+    @Parameters({
+            @Parameter(name = "processInstanceId",required = true , description = "流程实例id", example = "018273249827498324"),
+            @Parameter(name = "activityId",required = true, description = "节点id", example = "12143334")
     })
     @PostMapping(value = "/getOneActivityVoByProcessInstanceIdAndActivityId", produces = "application/json")
     public ReturnVo<ActivityVo> getOneActivityVoByProcessInstanceIdAndActivityId(String processInstanceId, String activityId) {
@@ -134,80 +134,80 @@ public class FlowApiRest extends AbstractFlowApiImpl {
     }
 
     @Override
-    @ApiOperation(value = "查询我发起的流程", notes = "查询我发起的流程列表")
-    @ApiImplicitParam(name = "processInstanceVoParamVo", value = "分页查询参数", required = true, dataType = "ParamVo")
+    @Operation(summary = "查询我发起的流程", description = "查询我发起的流程列表")
+    @Parameter(name = "processInstanceVoParamVo", description = "分页查询参数", required = true)
     @PostMapping(value = "/findMyProcessinstancesPagerModel", produces = "application/json")
     public ReturnVo<PagerModel> findMyProcessinstancesPagerModel(@RequestBody ParamVo<InstanceQueryParamsVo> processInstanceVoParamVo) {
         return super.findMyProcessinstancesPagerModel(processInstanceVoParamVo);
     }
 
     @Override
-    @ApiOperation(value = "查询我的待办任务总数", notes = "查询我的待办任务总数")
-    @ApiImplicitParam(name = "getAppingTaskCont", value = "查询参数", required = true, dataType = "params")
+    @Operation(summary = "查询我的待办任务总数", description = "查询我的待办任务总数")
+    @Parameter(name = "getAppingTaskCont", description = "查询参数", required = true)
     @PostMapping(value = "/getAppingTaskCont", produces = "application/json")
     public ReturnVo<Long> getAppingTaskCont(@RequestBody TaskQueryParamsVo params) {
         return super.getAppingTaskCont(params);
     }
 
     @Override
-    @ApiOperation(value = "查询我的待办任务", notes = "查询我的待办任务列表")
-    @ApiImplicitParam(name = "getAppingTasksPagerModel", value = "分页查询参数", required = true, dataType = "ParamVo")
+    @Operation(summary = "查询我的待办任务", description = "查询我的待办任务列表")
+    @Parameter(name = "getAppingTasksPagerModel", description = "分页查询参数", required = true)
     @PostMapping(value = "/getAppingTasksPagerModel", produces = "application/json")
     public ReturnVo<PagerModel> getAppingTasksPagerModel(@RequestBody ParamVo<TaskQueryParamsVo> taskQueryParamsVoParamVo) {
         return super.getAppingTasksPagerModel(taskQueryParamsVoParamVo);
     }
 
     @Override
-    @ApiOperation(value = "查询我的已办任务", notes = "查询我的已办任务列表")
-    @ApiImplicitParam(name = "getApplyedTasksPagerModel", value = "分页查询参数", required = true, dataType = "ParamVo")
+    @Operation(summary = "查询我的已办任务", description = "查询我的已办任务列表")
+    @Parameter(name = "getApplyedTasksPagerModel", description = "分页查询参数", required = true)
     @PostMapping(value = "/getApplyedTasksPagerModel", produces = "application/json")
     public ReturnVo<PagerModel> getApplyedTasksPagerModel(@RequestBody ParamVo<TaskQueryParamsVo> taskQueryParamsVoParamVo) {
         return super.getApplyedTasksPagerModel(taskQueryParamsVoParamVo);
     }
 
     @Override
-    @ApiOperation(value = "查询当前流程的审批记录", notes = "查询当前流程的审批记录列表")
-    @ApiImplicitParam(name = "getCommentInfosByProcessInstanceId", value = "流程实例id", required = true, dataType = "String")
+    @Operation(summary = "查询当前流程的审批记录", description = "查询当前流程的审批记录列表")
+    @Parameter(name = "getCommentInfosByProcessInstanceId", description = "流程实例id")
     @PostMapping(value = "/getCommentInfosByProcessInstanceId", produces = "application/json")
     public ReturnVo<List> getCommentInfosByProcessInstanceId(String processInstanceId) {
         return super.getCommentInfosByProcessInstanceId(processInstanceId);
     }
 
     @Override
-    @ApiOperation(value = "启动流程", notes = "启动流程")
-    @ApiImplicitParam(name = "startProcessInstanceByKey", value = "启动流程", required = true, dataType = "StartProcessInstanceVo")
+    @Operation(summary = "启动流程", description = "启动流程")
+    @Parameter(name = "startProcessInstanceByKey", description = "启动流程", required = true)
     @PostMapping(value = "/startProcessInstanceByKey", produces = "application/json")
     public ReturnVo<String> startProcessInstanceByKey(@RequestBody StartProcessInstanceVo params) {
         return super.startProcessInstanceByKey(params);
     }
 
     @Override
-    @ApiOperation(value = "审批", notes = "审批")
-    @ApiImplicitParam(name = "complete", value = "审批", required = true, dataType = "completeTaskVo")
+    @Operation(summary = "审批", description = "审批")
+    @Parameter(name = "complete", description = "审批", required = true)
     @PostMapping(value = "/complete", produces = "application/json")
     public ReturnVo<String> complete(@RequestBody CompleteTaskVo completeTaskVo) throws FlowException {
         return super.complete(completeTaskVo);
     }
 
     @Override
-    @ApiOperation(value = "拒绝", notes = "拒绝")
-    @ApiImplicitParam(name = "stopProcess", value = "拒绝", required = true, dataType = "endVo")
+    @Operation(summary = "拒绝", description = "拒绝")
+    @Parameter(name = "stopProcess", description = "拒绝", required = true)
     @PostMapping(value = "/stopProcess", produces = "application/json")
     public ReturnVo<String> stopProcess(@RequestBody EndVo endVo) {
         return super.stopProcess(endVo);
     }
 
     @Override
-    @ApiOperation(value = "获取高亮线和节点", notes = "获取高亮线和节点")
-    @ApiImplicitParam(name = "getHighLightedNodeVoByProcessInstanceId", value = "getHighLightedNodeVoByProcessInstanceId", required = true, dataType = "String")
+    @Operation(summary = "获取高亮线和节点", description = "获取高亮线和节点")
+    @Parameter(name = "getHighLightedNodeVoByProcessInstanceId", description = "getHighLightedNodeVoByProcessInstanceId", required = true)
     @PostMapping(value = "/getHighLightedNodeVoByProcessInstanceId", produces = "application/json")
     public ReturnVo<HighLightedNodeVo> getHighLightedNodeVoByProcessInstanceId(String processInstanceId) {
         return super.getHighLightedNodeVoByProcessInstanceId(processInstanceId);
     }
 
     @Override
-    @ApiOperation(value = "获取所有系统", notes = "获取所有系统")
-    @ApiImplicitParam(name = "getApps", value = "getApps")
+    @Operation(summary = "获取所有系统", description = "获取所有系统")
+    @Parameter(name = "getApps", description = "getApps")
     @PostMapping(value = "/getApps", produces = "application/json")
     public ReturnVo<List> getApps() {
         return super.getApps();

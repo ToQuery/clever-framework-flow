@@ -5,7 +5,7 @@ import com.dragon.flow.model.log.SysOperRecord;
 import com.dragon.flow.vo.log.LogVo;
 import com.dragon.tools.common.IpUtils;
 import com.dragon.tools.utils.FastJsonUtils;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -53,8 +53,8 @@ public abstract class RequestLogAspect {
         Map<String, Object> paramMap = this.getRequestParams(proceedingJoinPoint);
 
         operContentMap.putAll(paramMap);
-        ApiOperation annotation = methodSignature.getMethod().getAnnotation(ApiOperation.class);
-        String value = annotation == null ? "" : annotation.value();
+        Operation annotation = methodSignature.getMethod().getAnnotation(Operation.class);
+        String value = annotation == null ? "" : annotation.summary();
         if (StringUtils.isNotBlank(value)){
             operContentMap.put("ApiOperationValue", value);
         }
