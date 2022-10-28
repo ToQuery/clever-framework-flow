@@ -18,12 +18,7 @@
         <module>flow-api-rest</module>
         <module>flow-front-rest</module>
         <module>flow-log</module>
-		<!--
 
-		<module>flow-parent</module>
-        <module>flow-dubbo</module>
-        <module>flow-springcloud</module>
-        -->
     </modules>
 	<groupId>com.dragon</groupId>
 	<artifactId>flow</artifactId>
@@ -126,6 +121,12 @@
 
 			<dependency>
 				<groupId>org.flowable</groupId>
+				<artifactId>flowable-spring-boot-starter</artifactId>
+				<version>${flowable.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.flowable</groupId>
 				<artifactId>flowable-bpmn-model</artifactId>
 				<version>${flowable.version}</version>
 				<scope>compile</scope>
@@ -133,6 +134,21 @@
 			<dependency>
 				<groupId>org.flowable</groupId>
 				<artifactId>flowable-json-converter</artifactId>
+				<version>${flowable.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.flowable</groupId>
+				<artifactId>flowable-dmn-json-converter</artifactId>
+				<version>${flowable.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.flowable</groupId>
+				<artifactId>flowable-ui-common</artifactId>
+				<version>${flowable.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.flowable</groupId>
+				<artifactId>flowable-ui-modeler-logic</artifactId>
 				<version>${flowable.version}</version>
 			</dependency>
 			<dependency>
@@ -240,7 +256,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.3.4.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>

@@ -14,7 +14,6 @@
         <dependency>
             <groupId>com.dragon</groupId>
             <artifactId>flow-tools</artifactId>
-            <version>${flow.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

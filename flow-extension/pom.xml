@@ -38,22 +38,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
-    <!-- 部署远程maven仓库里面 -->
-    <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <name>releases</name>
-            <url>https://repo.rdc.aliyun.com/repository/74654-release-csIaMr/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus</id>
-            <name>snapshots</name>
-            <url>https://repo.rdc.aliyun.com/repository/74654-snapshot-53FgUQ/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
     <!-- 发布源代码 -->
     <build>
         <plugins>

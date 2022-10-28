@@ -1,6 +1,6 @@
 package org.flowable.editor.language.json.converter;
 
-import com.dragon.flow.util.ExtansionPropertiesUtil;
+import com.dragon.flow.util.ExtensionPropertiesUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
@@ -58,7 +58,7 @@ public class BruceCallActivityJsonConverter extends CallActivityJsonConverter {
     private void addExtansionPropertiesElement(FlowElement flowElement, JsonNode elementNode) {
         if (flowElement instanceof CallActivity){
             CallActivity callActivity = (CallActivity) flowElement;
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, callActivity, MODEL_BPMN_EXTENSION);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, callActivity, MODEL_BPMN_EXTENSION);
         }
     }
 

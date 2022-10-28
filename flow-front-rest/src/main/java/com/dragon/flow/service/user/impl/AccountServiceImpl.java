@@ -3,7 +3,6 @@ package com.dragon.flow.service.user.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dragon.flow.mapper.user.IAccountMapper;
-import com.dragon.flow.model.privilege.User;
 import com.dragon.flow.model.user.Account;
 import com.dragon.flow.service.user.IAccountService;
 import com.dragon.tools.common.MD5Util;
@@ -37,7 +36,5 @@ public class AccountServiceImpl extends ServiceImpl<IAccountMapper, Account> imp
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(MD5Util.getMD5String("888888"));
-    }
+
 }

@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_MYSQL_HOST}:3306/clever_framework_flow?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    username: ${DB_MYSQL_USER}
+    password: ${DB_MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+dragon:
+  flow:
+    front:
+      httppool:
+        connection-request-timeout: '20000'
+        connect-timeout: '20000'
+        default-max-per-route: '64'
+        socket-timeout: '20000'
+        maxtotal: '64'
+        validate-after-inactivity: '20000'
+      flow-api-url: http://localhost:8988
+    api:
+      app-sn: portal
+      app-secret-key: K9909Jszc%YcleRr50c9aRO88q5QdxK#~0XeJz8FU89092MA5ytwyE%bFTL0MUwF
+    message-enabled: 'false'
+bath:
+  path: http://localhost:8990
+log:
+  level: INFO
+  path: d:\data\applogs\flow

@@ -1,6 +1,6 @@
 package org.flowable.editor.language.json.converter;
 
-import com.dragon.flow.util.ExtansionPropertiesUtil;
+import com.dragon.flow.util.ExtensionPropertiesUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
@@ -106,14 +106,14 @@ public class BruceUserTaskJsonConverter extends UserTaskJsonConverter {
     private void addExtansionPropertiesElement(FlowElement flowElement, JsonNode elementNode) {
         if (flowElement instanceof UserTask){
             UserTask userTask = (UserTask) flowElement;
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, ASSIGNEE_TYPE);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IDM_ASSIGNEE);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IDM_CANDIDATE_GROUPS);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IDM_CANDIDATE_USERS);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IS_EDITDATA);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, NODE_TYPE);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, NEXT_SEQUENCE_FLOW_LABEL);
-            ExtansionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, NEXT_USER_LABEL);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, ASSIGNEE_TYPE);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IDM_ASSIGNEE);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IDM_CANDIDATE_GROUPS);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IDM_CANDIDATE_USERS);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, IS_EDITDATA);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, NODE_TYPE);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, NEXT_SEQUENCE_FLOW_LABEL);
+            ExtensionPropertiesUtil.addExtansionPropertiesElement(elementNode, userTask, NEXT_USER_LABEL);
         }
     }
 

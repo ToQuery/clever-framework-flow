@@ -49,12 +49,10 @@
         <dependency>
             <groupId>com.dragon</groupId>
             <artifactId>flow-api</artifactId>
-            <version>${flow.version}</version>
         </dependency>
         <dependency>
             <groupId>com.dragon</groupId>
             <artifactId>flow-extension</artifactId>
-            <version>${flow.version}</version>
         </dependency>
 
         <!--开启 cache 缓存-->
@@ -88,7 +86,6 @@
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-spring-boot-starter</artifactId>
-            <version>${flowable.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.flowable</groupId>
@@ -116,18 +113,15 @@
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-json-converter</artifactId>
-            <version>${flowable.version}</version>
         </dependency>
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-dmn-json-converter</artifactId>
-            <version>${flowable.version}</version>
         </dependency>
         <!-- 配置ui集成 -->
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-ui-common</artifactId>
-            <version>${flowable.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.logging.log4j</groupId>
@@ -146,7 +140,6 @@
         <dependency>
             <groupId>org.flowable</groupId>
             <artifactId>flowable-ui-modeler-logic</artifactId>
-            <version>${flowable.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.logging.log4j</groupId>
@@ -180,12 +173,7 @@
             <version>2.1</version>
             <scope>provided</scope>
         </dependency>
-        <!-- 获取真实的地址 -->
-        <dependency>
-            <groupId>com.maxmind.geoip2</groupId>
-            <artifactId>geoip2</artifactId>
-            <version>2.6.0</version>
-        </dependency>
+
     </dependencies>
     <build>
         <finalName>flow-core</finalName>
